@@ -1,18 +1,30 @@
 package com.example.domain.useCase
 
+import com.example.domain.model.ResponseData
 import com.example.domain.repository.UsersRepository
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 /**
- * This class represents a use case for getting users.
- * It uses the UsersRepository to fetch the users.
+ * Use case for getting users.
  *
- * @property repository The repository used to fetch the users.
+ * This class is a part of the domain layer and encapsulates the logic for retrieving users.
+ * It is an example of the Command pattern and the Single Responsibility Principle.
+ *
+ * @property userRepository The repository instance, injected by Dagger.
  */
-class GetUsersUseCase(private val repository: UsersRepository) {
+class GetUsersUseCase @Inject constructor(private val userRepository: UsersRepository) :
+    BaseUseCase<Unit, Flow<ResponseData>>() {
+
     /**
-     * This function invokes the getUsers function from the repository.
+     * Executes the use case of getting users.
      *
-     * @return The result of the getUsers function from the repository.
+     * This function is a suspend function and should be called from a coroutine or another suspend function.
+     *
+     * @param params The parameters of the use case. In this case, it is Unit because no parameters are needed.
+     * @return A Flow of ResponseData.
      */
-    operator fun invoke() = repository.getUsers()
+    override fun execute(params: Unit): Flow<ResponseData> {
+        return userRepository.getUsers()
+    }
 }
