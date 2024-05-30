@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 @Entity(tableName = "support")
-data class Response(
+data class ResponseData(
     @SerializedName(value = "page") val page: Int,
     @SerializedName(value = "per_page") val perPage: Int,
     @SerializedName(value = "total") val total: Int,
