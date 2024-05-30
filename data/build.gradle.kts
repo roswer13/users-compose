@@ -42,6 +42,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("javax.inject:javax.inject:1")
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    // Testing dependencies
+    testImplementation("junit:junit:4.13")
+    testImplementation("org.mockito:mockito-core:5.2.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
 }

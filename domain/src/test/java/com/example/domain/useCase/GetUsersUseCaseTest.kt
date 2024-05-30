@@ -4,6 +4,7 @@ import com.example.domain.model.ResponseData
 import com.example.domain.model.Support
 import com.example.domain.model.User
 import com.example.domain.repository.UsersRepository
+import com.example.domain.util.UtilTests
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -33,19 +34,7 @@ class GetUsersUseCaseTest {
     @Test
     fun `execute() should return response with users from repository`() = runTest {
         // Arrange
-        val expectedResponseData = ResponseData(
-            page = 1,
-            perPage = 2,
-            total = 2,
-            totalPages = 2,
-            data = listOf(
-                User(1, "test@test.com", "John", "Doe", "https://i.pravatar.cc/300"),
-                User(2, "test2@test.com", "Jane", "Doe", "https://i.pravatar.cc/300")
-            ),
-            support = Support(
-                "https://reqres.in/#support-url", "https://reqres.in/#support-heading"
-            )
-        )
+        val expectedResponseData = UtilTests.dummyResponseData
         `when`(usersRepository.getUsers()).thenReturn(flowOf(expectedResponseData))
 
         // Act
