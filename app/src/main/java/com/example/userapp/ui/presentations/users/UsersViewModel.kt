@@ -1,35 +1,32 @@
 package com.example.userapp.ui.presentations.users
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.userapp.network.UsersApi
-import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
+import com.example.domain.model.ResponseData
+import com.example.domain.useCase.GetUsersUseCase
+import com.example.data.UiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
-class UsersViewModel : ViewModel() {
-    var usersUiState: UsersState by mutableStateOf(UsersState.Loading)
-        private set
+@HiltViewModel
+class UsersViewModel @Inject constructor(
+    private val getUsersUseCase: GetUsersUseCase
+) : ViewModel() {
 
-    init {
-        getUsers()
-    }
+    private val _uiStateUsers: MutableStateFlow<UiState<ResponseData>> =
+        MutableStateFlow(UiState.Loading)
+    val uiStateUsers: StateFlow<UiState<ResponseData>> = _uiStateUsers
 
-    private fun getUsers() {
-
-        viewModelScope.launch {
-            usersUiState = UsersState.Loading
-            usersUiState = try {
-                val listResult = UsersApi.retrofitService.getUsers()
-                UsersState.Success(listResult)
-            } catch (e: IOException) {
-                UsersState.Error
-            } catch (e: HttpException) {
-                UsersState.Error
-            }
-        }
+    fun getUsers() {
+        getUsersUseCase.execute(Unit).onEach { users ->
+            _uiStateUsers.value = UiState.Success(users)
+        }.catch { e ->
+            _uiStateUsers.value = UiState.Error(e.message.toString())
+        }.launchIn(viewModelScope)
     }
 }
