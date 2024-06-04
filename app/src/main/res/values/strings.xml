@@ -5,4 +5,6 @@
     <string name="loading">Loading</string>
     <string name="placeholder_success">Placeholder text</string>
     <string name="user_photo">User photo</string>
+
+    <string name="test_message">Test message</string>
 </resources>
