@@ -85,6 +85,11 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.49")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     kapt("com.google.dagger:hilt-compiler:2.49")
+
+    // Testing dependencies
+    testImplementation("junit:junit:4.13")
+    testImplementation("org.mockito:mockito-core:5.2.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
 }
 
 // Allow references to generated code
