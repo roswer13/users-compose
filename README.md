@@ -4,11 +4,11 @@ UsersApp is a simple Android application that fetches a list of users from
 the [REQRES](https://reqres.in/) API and displays them in a list.
 The app is built using Jetpack Compose and follows the Use Case design pattern.
 
-## <br/><br/>Screenshort 📸
-![Screenshort](images/Screenshot_20240605_111546.png)
-![Screenshort](images/Screenshot_20240605_111755.png)
+## Screenshort 📸
+<img src="https://github.com/roswer13/users-compose/blob/main/images/Screenshot_20240605_111546.png?raw=true" height="250" /> 
+<img src="https://github.com/roswer13/users-compose/blob/main/images/Screenshot_20240605_111755.png?raw=true" height="250" />
 
-## <br/><br/>Built With 🛠
+## Built With 🛠
 - [Kotlin](https://kotlinlang.org/)
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 - [Compose](https://developer.android.com/jetpack/compose)
