@@ -5,8 +5,8 @@ the [REQRES](https://reqres.in/) API and displays them in a list.
 The app is built using Jetpack Compose and follows the Use Case design pattern.
 
 ## Screenshort 📸
-<img src="https://github.com/roswer13/users-compose/blob/main/images/Screenshot_20240605_111546.png?raw=true" height="250" /> 
-<img src="https://github.com/roswer13/users-compose/blob/main/images/Screenshot_20240605_111755.png?raw=true" height="250" />
+<img src="https://github.com/roswer13/users-compose/blob/main/images/Screenshot_20240605_111546.png?raw=true" height="400" /><img 
+src="https://github.com/roswer13/users-compose/blob/main/images/Screenshot_20240605_111755.png?raw=true" height="400" />
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/)
